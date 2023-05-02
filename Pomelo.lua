@@ -5,7 +5,12 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
   util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
 
 end
+--[[
 
+git commit -m "mensaje de actualizacion"
+git push
+
+]]---
 --IMAGEN BIENVENIDA
 
 P_DIR = filesystem.store_dir() .. "Pomelo\\"
