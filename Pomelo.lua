@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.36
+local localVer = 0.37
 local localKs = false
 
 util.toast("Hola, " .. players.get_name(players.user()))
