@@ -6,8 +6,21 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
 
 end
 ----------------------------https://github.com/alannpla/Pomelo/blob/main/version.txt
-
-
+function checkForUpdates()
+  local versionFile = io.open("version.txt", "r")
+  local localVersion = versionFile:read("*a")
+  versionFile:close()
+  
+  local httpHandler = io.popen("curl -s https://github.com/alannpla/Pomelo/blob/main/version.txt")
+  local remoteVersion = httpHandler:read("*a")
+  httpHandler:close()
+  
+  if localVersion ~= remoteVersion then
+    -- mostrar mensaje de actualización disponible
+  else
+    -- mostrar mensaje de que la versión está actualizada
+  end
+end
 
 
 --[[
@@ -224,6 +237,7 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
   menu.trigger_commands("randomoutfit")
   util.toast("Random outfit aplicado.")
 end)
+--[[
 ----------------------DIVIDER
 
 menu.divider(menu.my_root(), "Test", {}, end)
