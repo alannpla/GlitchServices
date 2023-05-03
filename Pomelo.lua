@@ -16,9 +16,9 @@ function checkForUpdates()
   httpHandler:close()
   
   if localVersion ~= remoteVersion then
-    -- mostrar mensaje de actualización disponible
+    util.toast("actualizacion 1")
   else
-    -- mostrar mensaje de que la versión está actualizada
+    util.toast("actualizacion 2.")
   end
 end
 
@@ -237,11 +237,11 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
   menu.trigger_commands("randomoutfit")
   util.toast("Random outfit aplicado.")
 end)
---[[
+
 ----------------------DIVIDER
 
 menu.divider(menu.my_root(), "Test", {}, end)
-
+--[[
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
 -----------TEST
 -----------TEST
