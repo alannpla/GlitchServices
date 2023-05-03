@@ -7,7 +7,7 @@ local response = false
 local localVer = 0.29
 local localKs = false
 
-util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!\nVersion actual ")
+util.toast("Hola, " .. players.get_name(players.user()))
 util.toast("Espere unos segundos...")
 
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
@@ -340,8 +340,7 @@ end)
 util.on_stop(function ()
   VEHICLE.SET_VEHICLE_GRAVITY(veh, true)
   ENTITY.SET_ENTITY_COLLISION(veh, true, true);
-  util.toast("Adious\nEspero te haya gustado :3")
-  util.toast("Limpiando...")
+  util.toast("Adious")
 end)
 
 
