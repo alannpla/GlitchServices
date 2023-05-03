@@ -10,8 +10,9 @@ end
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0,0,14
+local localVer = 0,0,15
 local localKs = false
+util.toast("Version actual" .. localVer .. "! \nBienvenido!")
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/blob/main/Pomelo.lua", function(output)
     currentVer = tonumber(output)
     response = true
@@ -38,9 +39,33 @@ repeat
     util.yield()
 until response
 
+--------------------
+
+function downloadImage(url)
+  -- Obtener el nombre del archivo de la URL
+  local fileName = string.match(url, "/([^/]+)$")
+
+  -- Descargar los datos de la imagen
+  local response, status = http.get(url)
+
+  if status == 200 then
+      -- Escribir los datos de la imagen en un archivo local
+      local file = io.open(fileName, "wb")
+      file:write(response)
+      file:close()
+
+      -- Cargar la imagen desde el archivo local y mostrarla en pantalla
+      local image = graphics.loadImage(fileName)
+      graphics.drawImage(image, 0, 0, 1280, 720)
+  else
+      print("Error al descargar la imagen:", status)
+  end
+end
+
+-- Llamar a la función para descargar la imagen desde la URL
+downloadImage("https://i.imgur.com/38GaFOR.png")
 
 --[[
-
 
 --IMAGEN BIENVENIDA
 
