@@ -8,41 +8,35 @@ end
 
 
 ---------------AUTO ACTUALIZACION
--- Reemplaza estos valores con los tuyos
-local repo_owner = "alannpla"
-local repo_name = "Pomelo"
-local current_version = "0.0.11"
 
-function check_for_updates()
-  -- Abre una conexión a GitHub
-  local conn = assert(socket.tcp())
-  conn:settimeout(5)
-  conn:connect("api.github.com", 443)
-  conn:send(string.format("GET /repos/%s/%s/releases/latest HTTP/1.0\r\nHost: api.github.com\r\nUser-Agent: Lua\r\nConnection: close\r\n\r\n", repo_owner, repo_name))
-
-  -- Lee la respuesta del servidor
-  local response = ""
-  repeat
-    local chunk, status, partial = conn:receive(1024)
-    response = response .. (chunk or partial)
-  until status == "closed"
-
-  -- Analiza la respuesta del servidor
-  local release = json.decode(response)
-
-  -- Compara la versión actual con la versión más reciente
-  if release.tag_name ~= current_version then
-    -- Descarga y aplica la actualización
-    local command = string.format("update.bat %s %s", repo_owner, repo_name)
-    os.execute(command)
-    dofile("updatedScript.lua")
-  end
-
-  -- Cierra la conexión
-  conn:close()
-end
-
-check_for_updates()
+local response = false
+local localVer = 0,0,1
+local localKs = false
+async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/blob/main/Pomelo.lua", function(output)
+    currentVer = tonumber(output)
+    response = true
+    if localVer ~= currentVer then
+        util.toast("Hay una actualizacion disponible, reinicia para actualizarlo.")
+        menu.action(menu.my_root(), "Actualizar Lua", {}, "", function()
+            async_http.init('raw.githubusercontent.com','/alannpla/Pomelo/blob/main/Pomelo.lua',function(a)
+                local err = select(2,load(a))
+                if err then
+                    util.toast("Hubo un fallo porfavor procede a la actualizacion manual con github.")
+                return end
+                local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
+                f:write(a)
+                f:close()
+                util.toast("Script actualizado, reiniciando el script :3")
+                util.restart_script()
+            end)
+            async_http.dispatch()
+        end)
+    end
+end, function() response = true end)
+async_http.dispatch()
+repeat 
+    util.yield()
+until response
 
 
 
