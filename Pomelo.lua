@@ -11,7 +11,7 @@ function checkVersion()
   local repo = "Pomelo"
   local branch = "main"
 
-  local url = string.format("https://api.github.com/repos/%s/%s/contents/version.txt?ref=%s", user, repo, branch)
+  local url = string.format("https://github.com/alannpla/Pomelo/blob/main/version.txt", user, repo, branch)
 
   local headers = {
     ["Accept"] = "application/vnd.github.v3+json"
