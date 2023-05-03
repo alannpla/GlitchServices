@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.35
+local localVer = 0.36
 local localKs = false
 
 util.toast("Hola, " .. players.get_name(players.user()))
@@ -36,7 +36,7 @@ repeat
     util.yield()
 until response
 
-menu.divider(menu.my_root(), "0.35", {}, end)
+menu.divider(menu.my_root(), "0.36", {}, end)
 ---------------LOCALIZACIONES
 
 function teleportToAirport()
@@ -201,11 +201,16 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
 end)
 
 ----------------------DIVIDER
---[[
+
 menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
------------TEST
+
+
+
+
+
+
 -----------TEST
 -----------TEST
 -----------TEST
