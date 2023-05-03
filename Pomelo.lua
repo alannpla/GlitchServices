@@ -6,28 +6,43 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
 
 end
 
-dofile("Pomelo.lua")
+
 ---------------AUTO ACTUALIZACION
-function checkForUpdates()
-  local currentVersion = "0.0.10" -- Versión actual de tu script
-  local url = "https://github.com/alannpla/Pomelo/blob/main/version.txt" -- URL del archivo de versión en GitHub
-  
-  -- Descarga el archivo de versión
-  local handle = io.popen("curl -s "..url)
-  local remoteVersion = handle:read("*a")
-  handle:close()
-  
-  -- Compara la versión remota con la versión actual
-  if remoteVersion ~= currentVersion then
-      print("Hay una nueva versión disponible. Descargando...")
-      os.execute("update.bat") -- Ejecuta el archivo batch para actualizar el script
-  else
-      print("Estás utilizando la última versión de este script.")
+-- Reemplaza estos valores con los tuyos
+local repo_owner = "alannpla"
+local repo_name = "Pomelo"
+local current_version = "0.0.11"
+
+function check_for_updates()
+  -- Abre una conexión a GitHub
+  local conn = assert(socket.tcp())
+  conn:settimeout(5)
+  conn:connect("api.github.com", 443)
+  conn:send(string.format("GET /repos/%s/%s/releases/latest HTTP/1.0\r\nHost: api.github.com\r\nUser-Agent: Lua\r\nConnection: close\r\n\r\n", repo_owner, repo_name))
+
+  -- Lee la respuesta del servidor
+  local response = ""
+  repeat
+    local chunk, status, partial = conn:receive(1024)
+    response = response .. (chunk or partial)
+  until status == "closed"
+
+  -- Analiza la respuesta del servidor
+  local release = json.decode(response)
+
+  -- Compara la versión actual con la versión más reciente
+  if release.tag_name ~= current_version then
+    -- Descarga y aplica la actualización
+    local command = string.format("update.bat %s %s", repo_owner, repo_name)
+    os.execute(command)
+    dofile("updatedScript.lua")
   end
+
+  -- Cierra la conexión
+  conn:close()
 end
 
-checkForUpdates() -- Llama a la función para comprobar actualizaciones al inicio del script
-
+check_for_updates()
 
 
 
