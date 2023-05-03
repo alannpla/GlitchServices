@@ -6,7 +6,7 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
 
 end
 
-dofile("Pomelo.lua")
+dofile("updatedScript.lua")
 ---------------AUTO ACTUALIZACION
 function checkForUpdates()
   local currentVersion = "0.0.10" -- Versión actual de tu script
