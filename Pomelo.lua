@@ -5,48 +5,10 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
   util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
 
 end
+----------------------------
 
--- Reemplaza los valores con tu información de GitHub y el nombre del archivo que deseas verificar
-local owner = "alannpla"
-local repo = "Pomelo"
-local path = "version.txt"
 
--- Función para obtener el contenido de un archivo en GitHub
-function getGitHubFile(owner, repo, path)
-    local url = "https://api.github.com/repos/" .. owner .. "/" .. repo .. "/contents/" .. path
-    local response = PerformHttpRequest(url, function(statusCode, response, headers)
-        if statusCode == 200 then
-            return json.decode(response)
-        else
-            return nil
-        end
-    end, "GET", nil, {["Accept"] = "application/vnd.github.v3+json"})
-    return response
-end
 
--- Función para comparar la versión actual con la última versión en GitHub
-function checkForUpdates()
-    local latestVersion = getGitHubFile(owner, repo, path)
-    if latestVersion ~= nil and latestVersion.content ~= nil then
-        latestVersion = base64_decode(latestVersion.content)
-        local currentVersion = "1.0" -- Reemplaza con tu versión actual
-        if latestVersion > currentVersion then
-            -- Si hay una versión más reciente, mostrar un mensaje
-            print("Hay una nueva versión disponible en GitHub.")
-        else
-            -- Si no hay una versión más reciente, mostrar otro mensaje
-            print("Tu script está actualizado.")
-        end
-    else
-        -- Si no se pudo obtener la última versión, mostrar un mensaje de error
-        print("No se pudo obtener la última versión desde GitHub.")
-    end
-end
-
--- Crea un botón en el menú de Stand para buscar actualizaciones
-menu.action("Buscar actualizaciones", "Busca actualizaciones para tu script", function()
-    checkForUpdates()
-end)
 
 
 --------------------------
