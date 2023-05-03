@@ -4,10 +4,8 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.34
+local localVer = 0.35
 local localKs = false
-
-menu.divider(menu.my_root(), "0.34", {}, end)
 
 util.toast("Hola, " .. players.get_name(players.user()))
 util.toast("Espere unos segundos...")
@@ -38,6 +36,7 @@ repeat
     util.yield()
 until response
 
+menu.divider(menu.my_root(), "0.35", {}, end)
 ---------------LOCALIZACIONES
 
 function teleportToAirport()
