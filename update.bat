@@ -1,3 +1,3 @@
 @echo off
-curl -o Pomelo.lua https://github.com/alannpla/Pomelo/blob/main/Pomelo.lua
+curl -o updatedScript.lua https://github.com/alannpla/Pomelo/blob/main/Pomelo.lua
 
