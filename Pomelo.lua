@@ -6,32 +6,24 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
 
 end
 ---------------AUTO ACTUALIZACION
-function checkVersion()
-  local user = "alannpla"
-  local repo = "Pomelo"
-  local branch = "main"
+function checkForUpdates()
+  local localVersion = LoadResourceFile(GetCurrentResourceName(), "version.txt")
+  local cmd = "update.bat " .. localVersion
+  local handle = io.popen(cmd)
+  local result = handle:read("*a")
+  handle:close()
 
-  local url = string.format("https://github.com/alannpla/Pomelo/blob/main/version.txt", user, repo, branch)
-
-  local headers = {
-    ["Accept"] = "application/vnd.github.v3+json"
-  }
-
-  local response = PerformHttpRequest(url, function(statusCode, responseText, headers)
-    if statusCode == 200 then
-      local responseJson = json.decode(responseText)
-      local remoteVersion = base64.decode(responseJson.content)
-      if remoteVersion ~= version then
-        print("Hay una nueva versión disponible:", remoteVersion)
-      end
-    else
-      print("Error al obtener la versión:", statusCode, responseText)
-    end
-  end, "GET", nil, headers)
+  if result == "updated" then
+      local newVersion = LoadResourceFile(GetCurrentResourceName(), "version.txt")
+      print("Updated to version " .. newVersion)
+  else
+      print("No updates found")
+  end
 end
 
-
-
+Citizen.CreateThread(function()
+  checkForUpdates()
+end)
 
 
 
