@@ -2,7 +2,7 @@ util.keep_running()
 util.require_natives(1651208000)
 if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" then
 
-  --util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
+  util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
 
 end
 
@@ -10,8 +10,11 @@ end
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.23
+local localVer = 0.24
 local localKs = false
+
+util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!\nVersion actual " .. localVer)
+
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
     currentVer = tonumber(output)
     response = true
@@ -37,81 +40,6 @@ async_http.dispatch()
 repeat 
     util.yield()
 until response
-
---------------------
-
-function downloadImage(url)
-  -- Obtener el nombre del archivo de la URL
-  local fileName = string.match(url, "/([^/]+)$")
-
-  -- Descargar los datos de la imagen
-  local response, status = async_http.init(url)
-
-  if status == 200 then
-      -- Escribir los datos de la imagen en un archivo local
-      local file = io.open(fileName, "wb")
-      file:write(response)
-      file:close()
-
-      -- Cargar la imagen desde el archivo local y mostrarla en pantalla
-      local image = graphics.loadImage(fileName)
-      graphics.drawImage(image, 0, 0, 1280, 720)
-  else
-      print("Error al descargar la imagen:", status)
-  end
-end
-
--- Llamar a la función para descargar la imagen desde la URL
-downloadImage("https://i.imgur.com/38GaFOR.png")
-
-
-
--------------------------------
-util.toast("Version actual " .. localVer .. "! \nBienvenido!")
---[[
-
---IMAGEN BIENVENIDA
-
-P_DIR = filesystem.store_dir() .. "Pomelo\\"
-FolderDirs = {
-  Img = P_DIR .. "Image\\",
-}
-
-
-function SHOW_IMG(img_name, max_passed_time) -- Credit goes to LanceScript Reloaded
-  if filesystem.exists(FolderDirs.Img .. img_name) then
-      local ImgAlpha = 0
-      local IncreasedImgAlpha = 0.01
-      util.create_tick_handler(function()
-          ImgAlpha = ImgAlpha + IncreasedImgAlpha
-          if ImgAlpha > 1 then
-              ImgAlpha = 1
-          elseif ImgAlpha < 0 then 
-              ImgAlpha = 0
-              return false
-          end
-      end)
-
-      local Img = directx.create_texture(FolderDirs.Img .. img_name)
-      local StartedTime = os.clock()
-      util.create_tick_handler(function()
-          directx.draw_texture(Img, 0.07, 0.07, 0.5, 0.5, 0.5, 0.5, 0, 1, 1, 1, ImgAlpha)
-          local PassedTime = os.clock() - StartedTime
-          if PassedTime > max_passed_time then
-              IncreasedImgAlpha = -0.01
-          end
-          if ImgAlpha == 0 then
-              return false
-          end
-      end)
-  end
-end
-if SCRIPT_MANUAL_START and not SCRIPT_SILENT_START then
-  SHOW_IMG("Pomelo Banner.png", 3)
-end
-
-]]---
-
 
 ---------------LOCALIZACIONES
 
@@ -277,9 +205,9 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
 end)
 
 ----------------------DIVIDER
-
-menu.divider(menu.my_root(), "Test", {}, end)
 --[[
+menu.divider(menu.my_root(), "Test", {}, end)
+
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
 -----------TEST
 -----------TEST
