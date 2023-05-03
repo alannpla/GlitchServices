@@ -1,16 +1,10 @@
 util.keep_running()
 util.require_natives(1651208000)
-if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" then
-
-  util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
-
-end
-
 
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.25
+local localVer = 0.26
 local localKs = false
 
 util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!\nVersion actual " .. localVer .. "\nEspere unos segundos.")
