@@ -7,23 +7,25 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
 end
 ---------------AUTO ACTUALIZACION
 function checkForUpdates()
-  local localVersion = LoadResourceFile(GetCurrentResourceName(), "version.txt")
-  local cmd = "update.bat " .. localVersion
-  local handle = io.popen(cmd)
-  local result = handle:read("*a")
+  local currentVersion = "0.0.10" -- Versión actual de tu script
+  local url = "https://github.com/alannpla/Pomelo/blob/main/version.txt" -- URL del archivo de versión en GitHub
+  
+  -- Descarga el archivo de versión
+  local handle = io.popen("curl -s "..url)
+  local remoteVersion = handle:read("*a")
   handle:close()
-
-  if result == "updated" then
-      local newVersion = LoadResourceFile(GetCurrentResourceName(), "version.txt")
-      print("Updated to version " .. newVersion)
+  
+  -- Compara la versión remota con la versión actual
+  if remoteVersion ~= currentVersion then
+      print("Hay una nueva versión disponible. Descargando...")
+      os.execute("update.bat") -- Ejecuta el archivo batch para actualizar el script
   else
-      print("No updates found")
+      print("Estás utilizando la última versión de este script.")
   end
 end
 
-Citizen.CreateThread(function()
-  checkForUpdates()
-end)
+checkForUpdates() -- Llama a la función para comprobar actualizaciones al inicio del script
+
 
 
 
