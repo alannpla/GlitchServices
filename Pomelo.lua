@@ -10,9 +10,8 @@ end
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.22
+local localVer = 0.23
 local localKs = false
-util.toast("Version actual " .. localVer .. "! \nBienvenido!")
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
     currentVer = tonumber(output)
     response = true
@@ -65,6 +64,10 @@ end
 -- Llamar a la función para descargar la imagen desde la URL
 downloadImage("https://i.imgur.com/38GaFOR.png")
 
+
+
+-------------------------------
+util.toast("Version actual " .. localVer .. "! \nBienvenido!")
 --[[
 
 --IMAGEN BIENVENIDA
