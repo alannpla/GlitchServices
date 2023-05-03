@@ -5,6 +5,8 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
   util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
 
 end
+
+dofile("Pomelo.lua")
 ---------------AUTO ACTUALIZACION
 function checkForUpdates()
   local currentVersion = "0.0.10" -- Versión actual de tu script
