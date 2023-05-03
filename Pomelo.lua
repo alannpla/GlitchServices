@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.30
+local localVer = 0.31
 local localKs = false
 
 util.toast("Hola, " .. players.get_name(players.user()))
@@ -340,7 +340,7 @@ end)
 util.on_stop(function ()
   VEHICLE.SET_VEHICLE_GRAVITY(veh, true)
   ENTITY.SET_ENTITY_COLLISION(veh, true, true);
-  util.toast("Adious")
+  util.toast("Adios.")
 end)
 
 
