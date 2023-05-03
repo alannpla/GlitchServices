@@ -2,7 +2,7 @@ util.keep_running()
 util.require_natives(1651208000)
 if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" then
 
-  util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
+  --util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
 
 end
 
@@ -10,9 +10,9 @@ end
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0,0,17
+local localVer = 0.18
 local localKs = false
-util.toast("Version actual" .. localVer .. "! \nBienvenido!")
+util.toast("Version actual" .. localVer() .. "! \nBienvenido!")
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
     currentVer = tonumber(output)
     response = true
