@@ -4,10 +4,10 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.28
+local localVer = 0.29
 local localKs = false
 
-util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!\nVersion actual " .. localVer)
+util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!\nVersion actual ")
 util.toast("Espere unos segundos...")
 
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
@@ -24,7 +24,7 @@ async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua"
                 local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
                 f:write(a)
                 f:close()
-                util.toast("Script actualizado, reiniciando el script :3")
+                util.toast("Script actualizado, reiniciando el script :3 \nVersion actual " .. localVer .. ".")
                 util.restart_script()
             end)
             async_http.dispatch()
@@ -337,7 +337,12 @@ end)
 -------------------
 
 ]]---
-
+util.on_stop(function ()
+  VEHICLE.SET_VEHICLE_GRAVITY(veh, true)
+  ENTITY.SET_ENTITY_COLLISION(veh, true, true);
+  util.toast("Adious\nEspero te haya gustado :3")
+  util.toast("Limpiando...")
+end)
 
 
 
