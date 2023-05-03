@@ -32,7 +32,7 @@ end
 
 
 
---[[
+
 
 
 --IMAGEN BIENVENIDA
@@ -74,7 +74,7 @@ end
 if SCRIPT_MANUAL_START and not SCRIPT_SILENT_START then
   SHOW_IMG("Pomelo Banner.png", 3)
 end
-]]---
+
 
 
 
