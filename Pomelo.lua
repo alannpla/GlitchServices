@@ -4,9 +4,10 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.31
+local localVer = 0.32
 local localKs = false
 
+menu.divider(menu.my_root(), localVer, {}, end)
 util.toast("Hola, " .. players.get_name(players.user()))
 util.toast("Espere unos segundos...")
 
@@ -24,7 +25,7 @@ async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua"
                 local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
                 f:write(a)
                 f:close()
-                util.toast("Script actualizado, reiniciando el script :3 \nVersion actual " .. localVer .. ".")
+                util.toast("Script actualizado. \nVersion actual " .. localVer .. ".")
                 util.restart_script()
             end)
             async_http.dispatch()
