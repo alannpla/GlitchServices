@@ -10,16 +10,16 @@ end
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0,0,16
+local localVer = 0,0,17
 local localKs = false
 util.toast("Version actual" .. localVer .. "! \nBienvenido!")
-async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/blob/main/Pomelo.lua", function(output)
+async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
     currentVer = tonumber(output)
     response = true
     if localVer ~= currentVer then
         util.toast("Hay una actualizacion disponible, reinicia para actualizarlo.")
         menu.action(menu.my_root(), "Actualizar Lua", {}, "", function()
-            async_http.init('raw.githubusercontent.com','/alannpla/Pomelo/blob/main/Pomelo.lua',function(a)
+            async_http.init('raw.githubusercontent.com','/alannpla/Pomelo/main/version.lua',function(a)
                 local err = select(2,load(a))
                 if err then
                     util.toast("Hubo un fallo porfavor procede a la actualizacion manual con github.")
