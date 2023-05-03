@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.26
+local localVer = 0.27
 local localKs = false
 
 util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!\nVersion actual " .. localVer .. "\nEspere unos segundos.")
@@ -15,7 +15,7 @@ async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua"
     if localVer ~= currentVer then
         util.toast("Hay una actualizacion disponible, reinicia para actualizarlo.")
         menu.action(menu.my_root(), "Actualizar Lua", {}, "", function()
-            async_http.init('raw.githubusercontent.com','/alannpla/Pomelo/main/version.lua',function(a)
+            async_http.init('raw.githubusercontent.com','/alannpla/Pomelo/main/Pomelo.lua',function(a)
                 local err = select(2,load(a))
                 if err then
                     util.toast("Hubo un fallo porfavor procede a la actualizacion manual con github.")
