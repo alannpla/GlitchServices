@@ -10,7 +10,7 @@ end
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0,0,1
+local localVer = 0,0,13
 local localKs = false
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/blob/main/Pomelo.lua", function(output)
     currentVer = tonumber(output)
