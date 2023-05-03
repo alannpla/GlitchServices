@@ -5,31 +5,36 @@ if not SCRIPT_SILENT_START and players.get_name(players.user()) ~= "UNKNOWN" the
   util.toast("Hola, " .. players.get_name(players.user()) .. "! \nBienvenido!")
 
 end
-----------------------------https://github.com/alannpla/Pomelo/blob/main/version.txt
-function checkForUpdates()
-  local versionFile = io.open("version.txt", "r")
-  local localVersion = versionFile:read("*a")
-  versionFile:close()
-  
-  local httpHandler = io.popen("curl -s https://github.com/alannpla/Pomelo/blob/main/version.txt")
-  local remoteVersion = httpHandler:read("*a")
-  httpHandler:close()
-  
-  if localVersion ~= remoteVersion then
-    util.toast("actualizacion 1")
-  else
-    util.toast("actualizacion 2.")
-  end
+---------------AUTO ACTUALIZACION
+function checkVersion()
+  local user = "alannpla"
+  local repo = "Pomelo"
+  local branch = "main"
+
+  local url = string.format("https://api.github.com/repos/%s/%s/contents/version.txt?ref=%s", user, repo, branch)
+
+  local headers = {
+    ["Accept"] = "application/vnd.github.v3+json"
+  }
+
+  local response = PerformHttpRequest(url, function(statusCode, responseText, headers)
+    if statusCode == 200 then
+      local responseJson = json.decode(responseText)
+      local remoteVersion = base64.decode(responseJson.content)
+      if remoteVersion ~= version then
+        print("Hay una nueva versión disponible:", remoteVersion)
+      end
+    else
+      print("Error al obtener la versión:", statusCode, responseText)
+    end
+  end, "GET", nil, headers)
 end
 
 
+
 --[[
-menu.action(menu.my_root(), "", {""}, "", teleportToBinco)
 
-git commit -m "mensaje de actualizacion"
-git push
 
-]]---
 --IMAGEN BIENVENIDA
 
 P_DIR = filesystem.store_dir() .. "Pomelo\\"
@@ -69,7 +74,7 @@ end
 if SCRIPT_MANUAL_START and not SCRIPT_SILENT_START then
   SHOW_IMG("Pomelo Banner.png", 3)
 end
-
+]]---
 
 
 
@@ -111,8 +116,6 @@ menu.action(teleportMenu, "Los Santos Customs", {""}, "", teleportToSantosCustom
 menu.action(teleportMenu, "Binco", {"tpbinco"}, "", teleportToBinco)
 
 --[[
-
--813.92426, -1085.2758, 10.983818
 
 ]]---
 
