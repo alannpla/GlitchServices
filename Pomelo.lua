@@ -10,7 +10,7 @@ end
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0,0,1
+local localVer = 0,0,14
 local localKs = false
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/blob/main/Pomelo.lua", function(output)
     currentVer = tonumber(output)
@@ -38,6 +38,8 @@ repeat
     util.yield()
 until response
 
+
+--[[
 
 
 --IMAGEN BIENVENIDA
@@ -80,7 +82,7 @@ if SCRIPT_MANUAL_START and not SCRIPT_SILENT_START then
   SHOW_IMG("Pomelo Banner.png", 3)
 end
 
-
+]]---
 
 
 ---------------LOCALIZACIONES
