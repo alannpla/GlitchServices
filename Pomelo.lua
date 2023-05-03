@@ -10,7 +10,7 @@ end
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.19
+local localVer = 0.20
 local localKs = false
 util.toast("Version actual" .. localVer .. "! \nBienvenido!")
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
@@ -46,7 +46,7 @@ function downloadImage(url)
   local fileName = string.match(url, "/([^/]+)$")
 
   -- Descargar los datos de la imagen
-  local response, status = http.get(url)
+  local response, status = async_http.init(url)
 
   if status == 200 then
       -- Escribir los datos de la imagen en un archivo local
