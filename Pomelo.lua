@@ -8,35 +8,10 @@ end
 ----------------------------https://github.com/alannpla/Pomelo/blob/main/version.txt
 
 
--- URL del archivo de versión en el repositorio de GitHub
-local versionUrl = "https://github.com/alannpla/Pomelo/blob/main/version.txt"
--- Versión actual de tu script
-local currentVersion = "1.0"
--- URL de la página de lanzamientos en el repositorio de GitHub
-local releasesUrl = "https://github.com/alannpla/Pomelo/blob/main/Pomelo.lua"
 
-function checkForUpdates()
-    local response, code = http.request(versionUrl)
-    if code == 200 then
-        local latestVersion = response
-        if latestVersion ~= currentVersion then
-            menu.notify("Nueva versión disponible: " .. latestVersion)
-            menu.action("Abrir página de lanzamientos", function()
-                os.execute("start " .. releasesUrl)
-            end)
-        else
-            menu.notify("Tu versión está actualizada")
-        end
-    else
-        menu.notify("No se pudo verificar la versión. Código de respuesta: " .. code)
-    end
-end
-
--- Agregar un botón al menú para verificar actualizaciones
-menu.action(menu.my_root(), "Verificar actualizaciones", {""}, "", checkForUpdates)
 
 --[[
-menu.action(menu.my_root(), "Binco", {""}, "", teleportToBinco)
+menu.action(menu.my_root(), "", {""}, "", teleportToBinco)
 
 git commit -m "mensaje de actualizacion"
 git push
