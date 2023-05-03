@@ -1,4 +1,3 @@
 @echo off
-echo Descargando actualización...
-powershell -Command "(New-Object Net.WebClient).DownloadFile('https://raw.githubusercontent.com/alannpla/Pomelo/blob/main/Pomelo.lua')"
-echo Actualización completada.
+curl -o Pomelo.lua https://github.com/alannpla/Pomelo/blob/main/Pomelo.lua
+
