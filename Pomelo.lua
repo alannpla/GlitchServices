@@ -205,7 +205,14 @@ end)
 menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
-
+function GET_INT_LOCAL(script, script_local)
+  if memory.script_local(script, script_local) ~= 0 then
+      local ReadLocal = memory.read_int(memory.script_local(script, script_local))
+      if ReadLocal ~= nil then
+          return ReadLocal
+      end
+  end
+end
 function GET_INT_GLOBAL(global)
   return memory.read_int(memory.script_global(global))
 end
@@ -214,7 +221,6 @@ function SET_INT_GLOBAL(global, value)
 end
 function IS_WORKING(is_add_new_line)
   local State = "" -- If global and local variables have been changed due to the GTAO update then
-  local Version = tonumber(NETWORK.GET_ONLINE_VERSION())
   if util.is_session_started() then -- Because unable to get local variable in story mode
       if GET_INT_LOCAL("freemode", 3618) ~= util.joaat("lr_prop_carkey_fob") then -- freemode.c, joaat("lr_prop_carkey_fob")
           State = TRANSLATE("[NOT WORKING]") .. "\n" .. TRANSLATE("- This feature isn't working due to the latest GTA Online patch:") .. " " .. Version .. ", " .. TRANSLATE("Please download the lastest version of Heist Control or wait for Heist Control's developer patching.")
