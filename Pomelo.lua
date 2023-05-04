@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.39
+local localVer = 0.40
 local localKs = false
 
 util.toast("Hola, " .. players.get_name(players.user()))
@@ -36,7 +36,7 @@ repeat
     util.yield()
 until response
 
-menu.divider(menu.my_root(), "0.39", {}, end)
+menu.divider(menu.my_root(), "0.40", {}, end)
 ---------------LOCALIZACIONES
 
 function teleportToAirport()
@@ -223,7 +223,7 @@ function IS_WORKING(is_add_new_line)
   local State = "" -- If global and local variables have been changed due to the GTAO update then
   if util.is_session_started() then -- Because unable to get local variable in story mode
       if GET_INT_LOCAL("freemode", 3618) ~= util.joaat("lr_prop_carkey_fob") then -- freemode.c, joaat("lr_prop_carkey_fob")
-          State = TRANSLATE("[NOT WORKING]") .. "\n" .. TRANSLATE("- This feature isn't working due to the latest GTA Online patch:") .. " " .. Version .. ", " .. TRANSLATE("Please download the lastest version of Heist Control or wait for Heist Control's developer patching.")
+          State = ("")
           if is_add_new_line then
               State = State .. "\n\n"
           end
