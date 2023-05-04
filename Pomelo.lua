@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.37
+local localVer = 0.38
 local localKs = false
 
 util.toast("Hola, " .. players.get_name(players.user()))
@@ -36,7 +36,7 @@ repeat
     util.yield()
 until response
 
-menu.divider(menu.my_root(), "0.37", {}, end)
+menu.divider(menu.my_root(), "0.38", {}, end)
 ---------------LOCALIZACIONES
 
 function teleportToAirport()
@@ -206,6 +206,15 @@ menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
 
+
+menu.toggle_loop(recovery, "Disable Transaction Errors", {"hcnotransactionerr"}, "This can be used to remove transaction errors while you are doing special cargo money loop in Musiness Banager Lua.", function()
+            if IS_WORKING(false) ~= "" then return end
+            if not util.is_session_started() then return end
+
+            if GET_INT_GLOBAL(4536679) == 4 or 20 then
+                SET_INT_GLOBAL(4536673, 0) -- https://github.com/jonaaa20/RecoverySuite
+            end
+        end)
 
 
 
