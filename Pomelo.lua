@@ -205,6 +205,7 @@ end)
 menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
+
 function GET_INT_LOCAL(script, script_local)
   if memory.script_local(script, script_local) ~= 0 then
       local ReadLocal = memory.read_int(memory.script_local(script, script_local))
@@ -222,7 +223,7 @@ end
 function IS_WORKING(is_add_new_line)
   local State = "" -- If global and local variables have been changed due to the GTAO update then
   if util.is_session_started() then -- Because unable to get local variable in story mode
-      if GET_INT_LOCAL("freemode", 3618) ~= util.joaat("lr_prop_carkey_fob") then -- freemode.c, joaat("lr_prop_carkey_fob")
+      if GET_INT_LOCAL("", 3618) ~= util.joaat("") then 
           State = ("")
           if is_add_new_line then
               State = State .. "\n\n"
