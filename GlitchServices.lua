@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.53
+local localVer = 0.54
 local localKs = false
 
 
@@ -236,6 +236,21 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
   util.toast("Random outfit aplicado.")
 end)
 
+--RULETA RUSA
+local randomizer = function(x)
+  local r = math.random(1,6)
+  return x[r]
+end
+array = {"1","2","3","4","5","6"}
+menu.action(varios, "Jalar el gatillo", {}, "Juega la ruleta rusa con tu vida.", function()
+  if randomizer(array) == "2" then
+      util.toast("Sobreviviste :D")
+  else
+      util.log("Te suicidaste D:")
+      menu.trigger_commands("ewo")
+  end
+end)
+
 --SOCIAL MEDIA
 
 local redesSociales = menu.list(menu.my_root(), "Redes Sociales", {}, "")
@@ -249,6 +264,8 @@ menu.hyperlink(redesSociales, "Discord Server", "https://discord.gg/glitchservic
 menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
+
+
 
 ----------TEST
 -----------TEST
