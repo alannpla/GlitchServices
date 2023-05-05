@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.52
+local localVer = 0.53
 local localKs = false
 
 
@@ -209,7 +209,7 @@ function IS_WORKING(is_add_new_line)
   return State
 end
 
-menu.toggle_loop(herramientas, "Deshabilitar Error de transaccion", {}, "Esto se puede usar para eliminar errores de transacción.", function(on_change)
+menu.toggle_loop(herramientas, "Deshabilitar Error de transaccion", {}, "Esto se puede usar para eliminar errores de transacción.", function()
             if IS_WORKING(false) ~= "" then return end
             if not util.is_session_started() then return end
 
@@ -250,14 +250,7 @@ menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
 
-
-
-local noErrTransaction = true
-menu.toggle(menu.my_root(), "Hold X to Handsup", {}, "hold X to handsup, this will also stop running animation", function (on_change)
-    if on_change then noErrTransaction = true else noErrTransaction = false end
-end, noErrTransaction)
-
------------TEST
+----------TEST
 -----------TEST
 -----------TEST
 -----------TEST
