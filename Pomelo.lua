@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.40
+local localVer = 0.41
 local localKs = false
 
 util.toast("Hola, " .. players.get_name(players.user()))
@@ -36,7 +36,7 @@ repeat
     util.yield()
 until response
 
-menu.divider(menu.my_root(), "0.40", {}, end)
+menu.divider(menu.my_root(), "0.41", {}, end)
 ---------------LOCALIZACIONES
 
 function teleportToAirport()
@@ -234,7 +234,7 @@ function IS_WORKING(is_add_new_line)
 end
 
 menu.toggle_loop(recovery, "Deshabilitar Error de transaccion", {}, "Esto se puede usar para eliminar errores de transacción.", function()
-            if IS_WORKING(false) ~= "" then return end
+            if IS_WORKING() ~= "" then return end
             if not util.is_session_started() then return end
 
             if GET_INT_GLOBAL(4536679) == 4 or 20 then
