@@ -4,20 +4,20 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.49
+local localVer = 0.50
 local localKs = false
 
 
 
 util.toast("Espere unos segundos...")
 
-async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
+async_http.init("raw.githubusercontent.com", "/alannpla/GlitchServices/main/version.lua", function(output)
     currentVer = tonumber(output)
     response = true
     if localVer ~= currentVer then
         util.toast("Hay una actualizacion disponible, reinicia para actualizarlo.")
         menu.action(menu.my_root(), "Actualizar Lua", {}, "", function()
-            async_http.init('raw.githubusercontent.com','/alannpla/Pomelo/main/Pomelo.lua',function(a)
+            async_http.init('raw.githubusercontent.com','/alannpla/GlitchServices/main/GlitchServices.lua',function(a)
                 local err = select(2,load(a))
                 if err then
                     util.toast("Hubo un fallo porfavor procede a la actualizacion manual con github.")
@@ -110,7 +110,7 @@ local mode = 1
     local message = "No molestes con god mode!"
     local delay = 10
     local max = 100
-    menu.text_input(myFolder, "Mensaje", {"spammessage"}, "Podes modificar el texto, ejemplo: Pomelo Script", function(txt)
+    menu.text_input(myFolder, "Mensaje", {"spammessage"}, "Podes modificar el texto, ejemplo: GlitchServices Script", function(txt)
 
       message = txt
 
@@ -234,7 +234,9 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
 end)
 
 --SOCIAL MEDIA
-menu.hyperlink(menu.my_root(), "Github", "https://github.com/alannpla/Pomelo", "")
+local redesSociales = menu.list(menu.my_root(), "Varios", {}, "")
+menu.hyperlink(redesSociales, "Mi Github", "https://github.com/alannpla", "")
+menu.hyperlink(redesSociales, "Discord Server", "https://discord.gg/glitchservices", "")
 
 
 
