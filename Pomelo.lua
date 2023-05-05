@@ -4,12 +4,11 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.46
+local localVer = 0.47
 local localKs = false
 
 menu.divider(menu.my_root(), "Version: " .. localVer, {}, end)
 
-util.toast("Hola, " .. players.get_name(players.user()))
 util.toast("Espere unos segundos...")
 
 async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua", function(output)
@@ -27,7 +26,7 @@ async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua"
                 local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
                 f:write(a)
                 f:close()
-                util.toast("Script actualizado. \nVersion actual " .. localVer .. ".")
+                util.toast("Script actualizado. \nVersion actual " .. localVer .. ". \nBienvenido " .. players.get_name(players.user()))
                 util.restart_script()
             end)
             async_http.dispatch()
@@ -38,11 +37,6 @@ async_http.dispatch()
 repeat 
     util.yield()
 until response
-
-
------
-
-
 
 ---------------LOCALIZACIONES
 
@@ -189,6 +183,7 @@ local mode = 1
     end
 
 end)
+
 ------------------MISC
 local varios = menu.list(menu.my_root(), "Varios", {}, "")
 
@@ -207,14 +202,8 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
   util.toast("Random outfit aplicado.")
 end)
 
-----------------------DIVIDER
+----------------------HERRAMIENTAS
 
-menu.divider(menu.my_root(), "Test", {}, end)
-
-local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
-
-
------------TEST
 local herramientas = menu.list(menu.my_root(), "Herramientas", {}, "")
 function GET_INT_LOCAL(script, script_local)
   if memory.script_local(script, script_local) ~= 0 then
@@ -252,7 +241,14 @@ menu.toggle_loop(herramientas, "Deshabilitar Error de transaccion", {}, "Esto se
             end
         end)
 
+----------------------DIVIDER
 
+menu.divider(menu.my_root(), "Test", {}, end)
+
+local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
+
+
+-----------TEST
 -----------TEST
 -----------TEST
 -----------TEST
