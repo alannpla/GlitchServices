@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.47
+local localVer = 0.48
 local localKs = false
 
 menu.divider(menu.my_root(), "Version: " .. localVer, {}, end)
@@ -21,7 +21,7 @@ async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua"
                 local err = select(2,load(a))
                 if err then
                     util.toast("Hubo un fallo porfavor procede a la actualizacion manual con github.")
-                    menu.hyperlink(menu.my_root(), "Github" .. output, "https://github.com/alannpla/Pomelo", "")
+                    
                 return end
                 local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
                 f:write(a)
@@ -46,21 +46,18 @@ function teleportToAirport()
   util.teleport_2d(x, y)
   util.toast("Fuiste teletansportado al aeropuerto.")
 end
-
 function teleportToSantosCustoms()
   local x = -376
   local y = -128
   util.teleport_2d(x, y)
   util.toast("Fuiste teletansportado a Los Santos Customs.")
 end
-
 function teleportToRandomLocation()
   local randomX = math.random(-2000, 2000)
   local randomY = math.random(-2000, 2000)
   util.teleport_2d(randomX, randomY)
   util.toast("Fuiste teletansportado a un lugar aleatorio.")
 end
-
 function teleportToBinco()
   local x = -813
   local y = -1085
@@ -109,13 +106,9 @@ end, "sayteam [message]")
 local myFolder = menu.list(myFolder, "Spammer", {}, "Podras espamear mensajes en el chat. (no recomandable)")
 
 local mode = 1
-
     local message = "No molestes con god mode!"
-
     local delay = 10
-
     local max = 100
-
     menu.text_input(myFolder, "Mensaje", {"spammessage"}, "Podes modificar el texto, ejemplo: Pomelo Script", function(txt)
 
       message = txt
@@ -135,8 +128,6 @@ local mode = 1
 		"Todos spamean"
 
 	}
-
-
 
     menu.slider_text(myFolder, "Modo", {}, "", options, function(op)
 
@@ -184,24 +175,6 @@ local mode = 1
 
 end)
 
-------------------MISC
-local varios = menu.list(menu.my_root(), "Varios", {}, "")
-
---SCREENSHOT
-menu.toggle(varios, "Modo Screenshot", {"screeshot"}, "Oculta hub.", function(on)
-	if on then
-		menu.trigger_commands("screenshot on")
-	else
-		menu.trigger_commands("screenshot off")
-	end
-end)
-
---RANDOM OUTFIT
-menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.", function()
-  menu.trigger_commands("randomoutfit")
-  util.toast("Random outfit aplicado.")
-end)
-
 ----------------------HERRAMIENTAS
 
 local herramientas = menu.list(menu.my_root(), "Herramientas", {}, "")
@@ -240,6 +213,29 @@ menu.toggle_loop(herramientas, "Deshabilitar Error de transaccion", {}, "Esto se
                 SET_INT_GLOBAL(4536673, 0) -- https://github.com/jonaaa20/RecoverySuite
             end
         end)
+
+------------------MISC
+local varios = menu.list(menu.my_root(), "Varios", {}, "")
+
+--SCREENSHOT
+menu.toggle(varios, "Modo Screenshot", {"screeshot"}, "Oculta hub.", function(on)
+	if on then
+		menu.trigger_commands("screenshot on")
+	else
+		menu.trigger_commands("screenshot off")
+	end
+end)
+
+--RANDOM OUTFIT
+menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.", function()
+  menu.trigger_commands("randomoutfit")
+  util.toast("Random outfit aplicado.")
+end)
+
+--SOCIAL MEDIA
+menu.hyperlink(menu.my_root(), "Github" .. output, "https://github.com/alannpla/Pomelo", "")
+
+
 
 ----------------------DIVIDER
 
