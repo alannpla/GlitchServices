@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.50
+local localVer = 0.51
 local localKs = false
 
 
@@ -234,7 +234,8 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
 end)
 
 --SOCIAL MEDIA
-local redesSociales = menu.list(menu.my_root(), "Varios", {}, "")
+
+local redesSociales = menu.list(menu.my_root(), "Redes Sociales", {}, "")
 menu.hyperlink(redesSociales, "Mi Github", "https://github.com/alannpla", "")
 menu.hyperlink(redesSociales, "Discord Server", "https://discord.gg/glitchservices", "")
 
@@ -246,6 +247,10 @@ menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
 
+local activadoo = true
+menu.toggle(menu.my_root(), "Hold X to Handsup", {}, "hold X to handsup, this will also stop running animation", function (on_change)
+    if on_change then activadoo = true else activadoo = false end
+end, activadoo)
 
 -----------TEST
 -----------TEST
