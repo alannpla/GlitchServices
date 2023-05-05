@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.54
+local localVer = 0.55
 local localKs = false
 
 
@@ -243,7 +243,7 @@ local randomizer = function(x)
 end
 array = {"1","2","3","4","5","6"}
 menu.action(varios, "Jalar el gatillo", {}, "Juega la ruleta rusa con tu vida.", function()
-  if randomizer(array) == "2" then
+  if randomizer(array) == "1" then
       util.toast("Sobreviviste :D")
   else
       util.log("Te suicidaste D:")
@@ -402,7 +402,6 @@ end)
 util.on_stop(function ()
   VEHICLE.SET_VEHICLE_GRAVITY(veh, true)
   ENTITY.SET_ENTITY_COLLISION(veh, true, true);
-  util.toast("Adios.")
 end)
 
 
