@@ -4,10 +4,10 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.48
+local localVer = 0.49
 local localKs = false
 
-menu.divider(menu.my_root(), "Version: " .. localVer, {}, end)
+
 
 util.toast("Espere unos segundos...")
 
@@ -38,6 +38,7 @@ repeat
     util.yield()
 until response
 
+menu.divider(menu.my_root(), "Version: " .. localVer, {}, end)
 ---------------LOCALIZACIONES
 
 function teleportToAirport()
@@ -233,7 +234,7 @@ menu.action(varios, "Random outfit", {"randomoutfit"}, "Aplica un outfit random.
 end)
 
 --SOCIAL MEDIA
-menu.hyperlink(menu.my_root(), "Github" .. output, "https://github.com/alannpla/Pomelo", "")
+menu.hyperlink(menu.my_root(), "Github", "https://github.com/alannpla/Pomelo", "")
 
 
 
