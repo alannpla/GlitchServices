@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.45
+local localVer = 0.46
 local localKs = false
 
 menu.divider(menu.my_root(), "Version: " .. localVer, {}, end)
@@ -213,6 +213,9 @@ menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
 
+
+-----------TEST
+local herramientas = menu.list(menu.my_root(), "Herramientas", {}, "")
 function GET_INT_LOCAL(script, script_local)
   if memory.script_local(script, script_local) ~= 0 then
       local ReadLocal = memory.read_int(memory.script_local(script, script_local))
@@ -240,7 +243,7 @@ function IS_WORKING(is_add_new_line)
   return State
 end
 
-menu.toggle_loop(recovery, "Deshabilitar Error de transaccion", {}, "Esto se puede usar para eliminar errores de transacción.", function()
+menu.toggle_loop(herramientas, "Deshabilitar Error de transaccion", {}, "Esto se puede usar para eliminar errores de transacción.", function()
             if IS_WORKING(false) ~= "" then return end
             if not util.is_session_started() then return end
 
@@ -250,10 +253,6 @@ menu.toggle_loop(recovery, "Deshabilitar Error de transaccion", {}, "Esto se pue
         end)
 
 
-
-
-
------------TEST
 -----------TEST
 -----------TEST
 -----------TEST
