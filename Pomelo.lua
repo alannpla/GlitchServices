@@ -4,8 +4,10 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.43
+local localVer = 0.45
 local localKs = false
+
+menu.divider(menu.my_root(), "Version: " .. localVer, {}, end)
 
 util.toast("Hola, " .. players.get_name(players.user()))
 util.toast("Espere unos segundos...")
@@ -20,6 +22,7 @@ async_http.init("raw.githubusercontent.com", "/alannpla/Pomelo/main/version.lua"
                 local err = select(2,load(a))
                 if err then
                     util.toast("Hubo un fallo porfavor procede a la actualizacion manual con github.")
+                    menu.hyperlink(menu.my_root(), "Github" .. output, "https://github.com/alannpla/Pomelo", "")
                 return end
                 local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
                 f:write(a)
@@ -36,7 +39,7 @@ repeat
     util.yield()
 until response
 
-menu.divider(menu.my_root(), ""..(localVer).., {}, end)
+
 -----
 
 
