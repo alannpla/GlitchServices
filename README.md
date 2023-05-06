@@ -18,9 +18,6 @@ Una vez que hayas instalado el script, podrás utilizar Stand en GTA Online. Par
 
 Si deseas contribuir a este proyecto, ¡estamos abiertos a sugerencias y mejoras! Puedes enviar cualquier problema o sugerencia a través del sistema de problemas de GitHub, o enviar un pull request para contribuir directamente al código.
 
-## Licencia
-
-Este proyecto está disponible bajo la Licencia MIT. Puedes ver el archivo LICENSE.md para más detalles.
 
 ## Contacto
 
