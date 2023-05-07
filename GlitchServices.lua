@@ -267,30 +267,50 @@ local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las op
 
 -------------
 
-local outfits = {
-  {name = "Outfit 1", components = {0, 1, 2, 3, 4, 5, 6, 7, 8}, props = {0, 1, 2, 3, 4}},
-  {name = "Outfit 2", components = {11, 15, 14, 12, 13, 10, 8, 9, 7}, props = {1, 3, 4, 5}}
-  -- Agrega aquí tantos outfits como desees
-}
+menu.action(menu.my_root(), "outfit", {""}, "Aplica un outfit", function()
 
-local currentOutfit = 1
 
-function changeOutfit()
-  local outfit = outfits[currentOutfit]
-  for _, componentId in ipairs(outfit.components) do
-    Stand.SetPlayerComponentVariation(componentId, 0, 0, 2)
-  end
-  for _, propId in ipairs(outfit.props) do
-    Stand.SetPlayerProp(propId, 0, 0, 2)
-  end
-  currentOutfit = currentOutfit % #outfits + 1
-end
+  menu.trigger_commands("Head 0")
+  menu.trigger_commands("Headvar 255")
+  menu.trigger_commands("Mask 144")
+  menu.trigger_commands("Maskvar 0")
+  menu.trigger_commands("Hair 45")
+  menu.trigger_commands("Hairvar 1")
+  menu.trigger_commands("Top 282")
+  menu.trigger_commands("Topvar 0")
+  menu.trigger_commands("Gloves 110")
+  menu.trigger_commands("Glovesvar 8")
+  menu.trigger_commands("Top2 22")
+  menu.trigger_commands("Top2var 0")
+  menu.trigger_commands("Top3 54")
+  menu.trigger_commands("Top3var 0")
+  menu.trigger_commands("Parachute 82")
+  menu.trigger_commands("Parachutevar 8")
+  menu.trigger_commands("Pants 107")
+  menu.trigger_commands("Pantsvar 3")
+  menu.trigger_commands("Shoes 6")
+  menu.trigger_commands("feetvar 1")
+  menu.trigger_commands("Accessories 0")
+  menu.trigger_commands("Accessoriesvar 0")
+  menu.trigger_commands("Decals 0")
+  menu.trigger_commands("Decalsvar 0")
+  menu.trigger_commands("Hat -1")
+  menu.trigger_commands("Hatvar -1")
+  menu.trigger_commands("Glasses -1")
+  menu.trigger_commands("Glassesvar -1")
+  menu.trigger_commands("Ears -1")
+  menu.trigger_commands("Earsvar -1")
+  menu.trigger_commands("Watch -1")
+  menu.trigger_commands("Watchvar -1")
+  menu.trigger_commands("Bracelet -1")
+  menu.trigger_commands("Braceletvar -1")
 
-local menu = Stand.UI.Menu()
 
-local button = menu.action("Cambiar outfit", function()
-  changeOutfit()
+  util.toast("Outfit aplicado.")
 end)
+
+
+
 
 
 ----------TEST
