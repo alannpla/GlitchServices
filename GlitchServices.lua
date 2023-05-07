@@ -4,7 +4,7 @@ util.require_natives(1651208000)
 ---------------AUTO ACTUALIZACION
 
 local response = false
-local localVer = 0.55
+local localVer = 0.56
 local localKs = false
 
 
