@@ -241,7 +241,9 @@ local randomizer = function(x)
   local r = math.random(1,6)
   return x[r]
 end
+
 array = {"1","2","3","4","5","6"}
+
 menu.action(varios, "Jalar el gatillo", {}, "Juega la ruleta rusa con tu vida.", function()
   if randomizer(array) == "1" then
       util.toast("Sobreviviste :D")
@@ -265,8 +267,13 @@ menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
 
--------------
 
+
+
+
+
+-------------
+--[[
 menu.action(menu.my_root(), "outfit", {""}, "Aplica un outfit", function()
 
 
@@ -308,10 +315,89 @@ menu.action(menu.my_root(), "outfit", {""}, "Aplica un outfit", function()
 
   util.toast("Outfit aplicado.")
 end)
+-------------------
+--[[
+local routif2 = function(x)
+  local r = math.random(1,6)
+  return x[r]
+end
 
+array = {"1","2","3","4","5","6"}
 
+menu.action(menu.my_root(), "routfit2", {}, "Juega la ruleta rusa con tu vida.", function()
+  if routif2(array) == "1" then
+    menu.trigger_commands("Head 0")
+    menu.trigger_commands("Headvar 255")
+    menu.trigger_commands("Mask 144")
+    menu.trigger_commands("Maskvar 0")
+    menu.trigger_commands("Hair 45")
+    menu.trigger_commands("Hairvar 1")
+    menu.trigger_commands("Top 282")
+    menu.trigger_commands("Topvar 0")
+    menu.trigger_commands("Gloves 110")
+    menu.trigger_commands("Glovesvar 8")
+    menu.trigger_commands("Top2 22")
+    menu.trigger_commands("Top2var 0")
+    menu.trigger_commands("Top3 54")
+    menu.trigger_commands("Top3var 0")
+    menu.trigger_commands("Parachute 82")
+    menu.trigger_commands("Parachutevar 8")
+    menu.trigger_commands("Pants 107")
+    menu.trigger_commands("Pantsvar 3")
+    menu.trigger_commands("Shoes 6")
+    menu.trigger_commands("feetvar 1")
+    menu.trigger_commands("Accessories 0")
+    menu.trigger_commands("Accessoriesvar 0")
+    menu.trigger_commands("Decals 0")
+    menu.trigger_commands("Decalsvar 0")
+    menu.trigger_commands("Hat -1")
+    menu.trigger_commands("Hatvar -1")
+    menu.trigger_commands("Glasses -1")
+    menu.trigger_commands("Glassesvar -1")
+    menu.trigger_commands("Ears -1")
+    menu.trigger_commands("Earsvar -1")
+    menu.trigger_commands("Watch -1")
+    menu.trigger_commands("Watchvar -1")
+    menu.trigger_commands("Bracelet -1")
+    menu.trigger_commands("Braceletvar -1")
 
-
+  elseif routif2(array) == "2" then
+    menu.trigger_commands("Head 0")
+    menu.trigger_commands("Headvar 0")
+    menu.trigger_commands("Mask 173")
+    menu.trigger_commands("Maskvar 0")
+    menu.trigger_commands("Hair 50")
+    menu.trigger_commands("Hairvar 29")
+    menu.trigger_commands("Top 53")
+    menu.trigger_commands("Topvar 1")
+    menu.trigger_commands("Gloves 77")
+    menu.trigger_commands("Glovesvar 0")
+    menu.trigger_commands("Top2 15")
+    menu.trigger_commands("Top2var 0")
+    menu.trigger_commands("Top3 1")
+    menu.trigger_commands("Top3var 0")
+    menu.trigger_commands("Parachute 0")
+    menu.trigger_commands("Parachutevar 0")
+    menu.trigger_commands("Pants 59")
+    menu.trigger_commands("Pantsvar 6")
+    menu.trigger_commands("Shoes 8")
+    menu.trigger_commands("feetvar 0")
+    menu.trigger_commands("Accessories 0")
+    menu.trigger_commands("Accessoriesvar 0")
+    menu.trigger_commands("Decals 0")
+    menu.trigger_commands("Decalsvar 0")
+    menu.trigger_commands("Hat 59")
+    menu.trigger_commands("Hatvar 6")
+    menu.trigger_commands("Glasses -1")
+    menu.trigger_commands("Glassesvar -1")
+    menu.trigger_commands("Ears -1")
+    menu.trigger_commands("Earsvar -1")
+    menu.trigger_commands("Watch -1")
+    menu.trigger_commands("Watchvar -1")
+    menu.trigger_commands("Bracelet -1")
+    menu.trigger_commands("Braceletvar -1")
+  end
+end)
 
 ----------TEST
 -----------TEST
