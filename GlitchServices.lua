@@ -265,6 +265,32 @@ menu.divider(menu.my_root(), "Test", {}, end)
 
 local recovery = menu.list(menu.my_root(), "Recovery", {}, "ALERTA! Todas las opciones de esta carpeta se consideran riesgosas. No nos hacemos responsables. Estas advertido.")
 
+-------------
+
+local outfits = {
+  {name = "Outfit 1", components = {0, 1, 2, 3, 4, 5, 6, 7, 8}, props = {0, 1, 2, 3, 4}},
+  {name = "Outfit 2", components = {11, 15, 14, 12, 13, 10, 8, 9, 7}, props = {1, 3, 4, 5}}
+  -- Agrega aquí tantos outfits como desees
+}
+
+local currentOutfit = 1
+
+function changeOutfit()
+  local outfit = outfits[currentOutfit]
+  for _, componentId in ipairs(outfit.components) do
+    Stand.SetPlayerComponentVariation(componentId, 0, 0, 2)
+  end
+  for _, propId in ipairs(outfit.props) do
+    Stand.SetPlayerProp(propId, 0, 0, 2)
+  end
+  currentOutfit = currentOutfit % #outfits + 1
+end
+
+local menu = Stand.UI.Menu()
+
+local button = menu.action("Cambiar outfit", function()
+  changeOutfit()
+end)
 
 
 ----------TEST
